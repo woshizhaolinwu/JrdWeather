@@ -2,9 +2,10 @@ package jrdcom.com.jrdweather.NetWork.JrdHttp.Services;
 
 import java.util.List;
 
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.Beans.JrdMoveDetailBean;
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.Beans.JrdSubjectBean;
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.JrdHttpResult;
+
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdMoveDetailBean;
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdSubjectBean;
+import jrdcom.com.jrdweather.NetWork.JrdHttp.JrdHttpResult;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

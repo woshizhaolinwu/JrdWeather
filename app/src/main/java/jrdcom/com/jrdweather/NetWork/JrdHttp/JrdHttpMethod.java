@@ -3,9 +3,10 @@ package jrdcom.com.jrdweather.NetWork.JrdHttp;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.Beans.JrdMoveDetailBean;
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.Beans.JrdSubjectBean;
-import jrdcom.com.jrdboringdemo.Lib.JrdHttp.Services.JrdServiceInterface;
+
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdMoveDetailBean;
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdSubjectBean;
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Services.JrdServiceInterface;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

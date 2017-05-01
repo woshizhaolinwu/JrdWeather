@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 
-import jrdcom.com.jrdboringdemo.R;
+import jrdcom.com.jrdweather.R;
 
 ;
 
