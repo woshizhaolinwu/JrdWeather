@@ -1,5 +1,6 @@
 package jrdcom.com.jrdweather.Ui.Splash;
 
+import jrdcom.com.jrdweather.DataCache.JrdDataCache;
 import jrdcom.com.jrdweather.Model.JrdWeatherModel;
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdWeatherBean;
 
@@ -29,7 +30,7 @@ public class SplashPresent implements SplashConstract.SplashPresentApi {
         public void getWeatherInfo(JrdWeatherBean weatherBean) {
             /*饶了一圈，终于把weather信息获取回来了，很不容易啊*/
             /*保存起来，留到主屏的时候用*/
-
+            JrdDataCache.getInstance().setHasMapData(JrdDataCache.JRD_WEATHER_CURRENT_DATA, weatherBean);
         }
     };
 }

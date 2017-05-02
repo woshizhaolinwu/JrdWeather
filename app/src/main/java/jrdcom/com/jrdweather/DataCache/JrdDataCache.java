@@ -9,12 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class JrdDataCache
 {
     private ConcurrentHashMap<String, Object> mHashMap;
-    private JrdDataCache mInstance = null;
+    private static JrdDataCache mInstance = null;
     public JrdDataCache(){
         mHashMap = new ConcurrentHashMap<>();
     }
 
-    public JrdDataCache getInstance(){
+    public static JrdDataCache getInstance(){
         if(mInstance == null){
             mInstance = new JrdDataCache();
         }
@@ -44,4 +44,6 @@ public class JrdDataCache
      * 定义Common的key
      */
 
+    public static final String JRD_WEATHER_CITY_NAME = "city_name";
+    public static final String JRD_WEATHER_CURRENT_DATA="weather_data";
 }

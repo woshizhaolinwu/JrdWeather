@@ -1,6 +1,7 @@
 package jrdcom.com.jrdweather.Model;
 
 import jrdcom.com.jrdweather.BaiDuLocation.JrdBaiDuLocationManager;
+import jrdcom.com.jrdweather.DataCache.JrdDataCache;
 import jrdcom.com.jrdweather.JrdWeatherApplication;
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdWeatherBean;
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Interface.JrdOnNextListener;
@@ -16,6 +17,9 @@ public class JrdWeatherModel implements SplashConstract.SplashModelApi {
     private JrdWeatherGetListener mJrdWeatherGetListener;
     @Override
     public void getWeatherData() {
+        /*如果有历史cityname数据，则不需要重新获取*/
+        String city = JrdDataCache.getInstance().getHasMapData(JrdDataCache.JRD_WEATHER_CITY_NAME, String.class);
+
         /*定位获取地址， 并且根据新的地址查询天气*/
         JrdBaiDuLocationManager jrdBaiDuLocationManager = JrdBaiDuLocationManager.getInstance(JrdWeatherApplication.getAppContext());
         jrdBaiDuLocationManager.getLocation();
@@ -31,6 +35,8 @@ public class JrdWeatherModel implements SplashConstract.SplashModelApi {
 
         @Override
         public void getCityName(String cityName) {
+            //保存city name
+            JrdDataCache.getInstance().setHasMapData(JrdDataCache.JRD_WEATHER_CITY_NAME, cityName);
             //根据City来获取weather信息
             getWeatherInfo(cityName);
         }
