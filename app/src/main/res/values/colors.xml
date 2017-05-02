@@ -10,4 +10,5 @@
     <color name="movie_title">#00FFFF</color>
     <color name="text">#000000</color>
     <color name="second_title">#DDDDDD</color>
+    <color name="background_color">#329EDB</color>
 </resources>

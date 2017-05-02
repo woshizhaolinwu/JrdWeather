@@ -1,6 +1,8 @@
-package jrdcom.com.jrdweather;
+package jrdcom.com.jrdweather.Ui.Splash;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.content.pm.PackageManager;
 import android.media.Image;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -10,16 +12,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import jrdcom.com.jrdweather.Base.BaseActivity;
+import jrdcom.com.jrdweather.R;
+import jrdcom.com.jrdweather.Utils.AppUtils;
 import jrdcom.com.jrdweather.Utils.DisplayUtils;
+import jrdcom.com.jrdweather.Utils.JrdCommon;
 
 /**
  * Created by dhcui on 2017/4/29.
  */
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements SplashConstract.SplashView{
     private ImageView imageViewSun;
     private ImageView imageViewCloud;
     private Button btnGointo;
+    private SplashConstract.SplashPresentApi splashPresent;
 
     /*实现BaseActivity的抽象方法*/
     @Override
@@ -29,7 +35,9 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        //Do nothing
+        //申请权限
+        getLocationPermission();
+        splashPresent = new SplashPresent(this);
     }
 
     @Override
@@ -50,11 +58,13 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 /*进入MainActivity*/
+
             }
         });
     }
 
     private void playAnimationOnLayout(){
+        //监听GlobalLayout
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -63,6 +73,29 @@ public class SplashActivity extends BaseActivity {
             }
         });
     }
+
+    /*
+    * 申请Location权限
+    * */
+    private void getLocationPermission(){
+        String PermissionString = Manifest.permission.ACCESS_COARSE_LOCATION;
+        /*Android N后才需要主动获取权限*/
+        if(AppUtils.getSdkVersion() >= 23){
+            if(checkSelfPermission(PermissionString) != PackageManager.PERMISSION_GRANTED){
+                //requestPermissions(PermissionString, JrdCommon.LOCATION_REQUEST_CODE)
+                String requestPermis[] = {PermissionString};
+                requestPermissions(requestPermis, JrdCommon.LOCATION_REQUEST_CODE);
+            }
+        }else{
+            //获取weather数据
+            if(splashPresent != null){
+                splashPresent.requestWeatherData();
+            }
+        }
+
+        /*if(checkSelfPermission(Android.))*/
+    }
+
     /*
     * 播放动画
     * */

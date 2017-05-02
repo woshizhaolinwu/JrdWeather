@@ -16,7 +16,8 @@
         android:layout_below="@id/image_sun"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-20dp"
-        android:src="@drawable/cloud_1"/>
+        android:src="@drawable/cloud_1"
+        android:tint="@color/white"/>
 
     <Button
         android:id="@+id/btn_gointo"
@@ -25,6 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="80dp"
+        style="@style/ButtonNormal"
         android:text="进入"/>
 
 </RelativeLayout>

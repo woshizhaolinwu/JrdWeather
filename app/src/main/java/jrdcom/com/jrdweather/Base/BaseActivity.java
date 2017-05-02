@@ -19,6 +19,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         addListener();
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        initData();
+        initView();
+        addListener();
+    }
+
     public abstract void initView();
     public abstract void initData();
     public abstract void addListener();

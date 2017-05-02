@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdMoveDetailBean;
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdSubjectBean;
+import jrdcom.com.jrdweather.NetWork.JrdHttp.Beans.JrdWeatherBean;
 import jrdcom.com.jrdweather.NetWork.JrdHttp.Services.JrdServiceInterface;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -23,10 +24,11 @@ import rx.schedulers.Schedulers;
 
 public class JrdHttpMethod {
     //Base URL
-    private static final String BASE_URL = "https://api.douban.com/v2/movie/";
+    private static final String BASE_URL = "http://op.juhe.cn/";
+    private static final String JUHE_WEATHER_KEY = "3b8c8c784b4b439701fc34522213884f";
     private static final int DEFAULT_TIMEOUT = 5;
     private Retrofit jrdRetrofit;
-    private JrdServiceInterface jrdMovieServer;
+    private JrdServiceInterface jrdApiClient;
     //初始化
     private JrdHttpMethod(){
         //手动添加timeout
@@ -39,7 +41,7 @@ public class JrdHttpMethod {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        jrdMovieServer = jrdRetrofit.create(JrdServiceInterface.class);
+        jrdApiClient = jrdRetrofit.create(JrdServiceInterface.class);
     }
 
     private static class SingletonHolder{
@@ -50,45 +52,12 @@ public class JrdHttpMethod {
         return JrdHttpMethod.SingletonHolder.INSTANCE;
     }
 
-    public void getMovie(Subscriber<JrdSubjectBean> subscriber, int start, int count){
-        jrdMovieServer.getRXMovie(start, count)
-                .flatMap(new Func1<JrdHttpResult<List<JrdSubjectBean>>, Observable<JrdSubjectBean>>() {
-                    @Override
-                    public Observable<JrdSubjectBean> call(JrdHttpResult<List<JrdSubjectBean>> listHttpResult) {
-                        return Observable.from(listHttpResult.getSubjects());
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
-    public void getMovieList(Subscriber<List<JrdSubjectBean>> subscriber, int start, int count){
-        jrdMovieServer.getRXMovie(start, count)
-                .map(new Func1<JrdHttpResult<List<JrdSubjectBean>>, List<JrdSubjectBean>>() {
-                    @Override
-                    public List<JrdSubjectBean> call(JrdHttpResult<List<JrdSubjectBean>> listJrdHttpResult) {
-                        return listJrdHttpResult.getSubjects();
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-
-    }
-
-    public void getHttpMovieList(Subscriber<JrdHttpResult<List<JrdSubjectBean>>> subscriber, int start, int count){
-        jrdMovieServer.getRXMovie(start, count)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
-    public void getHttpMovieDetail(Subscriber<JrdMoveDetailBean> subscriber, String MovieId){
-        jrdMovieServer.getMovieDetail(MovieId)
+    /*
+    * 网络接口
+    * */
+    /*获取天气接口*/
+    public void requestWeatherData(Subscriber<JrdWeatherBean> subscriber, String cityName){
+        jrdApiClient.getWeatherData(cityName,JUHE_WEATHER_KEY)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
