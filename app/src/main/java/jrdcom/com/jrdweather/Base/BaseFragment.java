@@ -11,13 +11,13 @@ import android.view.ViewGroup;
  * Created by dhcui on 2017/4/29.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container,false);
         initData();
-        initView();
+        initView(view);
         addListener();
         return view;
     }
@@ -29,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public abstract void initData();
-    public abstract void initView();
+    public abstract void initView(View view);
     public abstract void addListener();
     public abstract int getLayoutId();
 }

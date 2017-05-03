@@ -18,17 +18,19 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     private JrdOnActionListener.JrdOnCompleteListener jrdOnCompleteListener;
     private ProgressDialogHander jrdProgressDialog;
     StringBuilder jrdStringBuiler;
-    public ProgressSubscriber(Context context, JrdOnNextListener<T> listener){
+    public ProgressSubscriber(Context context, JrdOnNextListener<T> listener, boolean isShow){
         jrdContext = context;
         jrdOnNextListener = listener;
+        if(isShow == true)
         jrdProgressDialog = new ProgressDialogHander(context, this);
         jrdStringBuiler =  new StringBuilder();
     }
 
-    public ProgressSubscriber(Context context, JrdOnNextListener<T> listener, JrdOnActionListener.JrdOnCompleteListener completeListener){
+    public ProgressSubscriber(Context context, JrdOnNextListener<T> listener, JrdOnActionListener.JrdOnCompleteListener completeListener,  boolean isShow){
         jrdContext = context;
         jrdOnNextListener = listener;
         jrdOnCompleteListener = completeListener;
+        if(isShow == true)
         jrdProgressDialog = new ProgressDialogHander(context, this);
         jrdStringBuiler =  new StringBuilder();
     }
@@ -58,6 +60,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     //Nest需要自己执行，传入会调借口
     @Override
     public void onNext(T t) {
+        if(jrdOnNextListener != null){}
         jrdOnNextListener.OnNext(t);
     }
 

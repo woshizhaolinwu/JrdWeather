@@ -24,8 +24,8 @@ import rx.schedulers.Schedulers;
 
 public class JrdHttpMethod {
     //Base URL
-    private static final String BASE_URL = "http://op.juhe.cn/";
-    private static final String JUHE_WEATHER_KEY = "3b8c8c784b4b439701fc34522213884f";
+    private static final String BASE_URL = "http://v.juhe.cn/weather/";
+    private static final String JUHE_WEATHER_KEY = "61a5541c660e656c809155a80f6c76de";
     private static final int DEFAULT_TIMEOUT = 5;
     private Retrofit jrdRetrofit;
     private JrdServiceInterface jrdApiClient;

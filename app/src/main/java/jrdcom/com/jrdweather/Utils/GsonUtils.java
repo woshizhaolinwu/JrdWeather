@@ -33,4 +33,8 @@ public class GsonUtils {
   public static String toJson(Object obj){
     return getSingleInstance().toJson(obj);
   }
+
+  public static <T>T fromJson(String gsonString, Class<T> tClass){
+      return getSingleInstance().fromJson(gsonString, tClass);
+  }
 }

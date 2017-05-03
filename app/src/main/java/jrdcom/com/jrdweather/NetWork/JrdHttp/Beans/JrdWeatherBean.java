@@ -1,21 +1,23 @@
 package jrdcom.com.jrdweather.NetWork.JrdHttp.Beans;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by longcheng on 2017/5/2.
  */
 
 public class JrdWeatherBean {
-
     /**
      * resultcode : 200
      * reason : successed!
-     * result : {"sk":{"temp":"17","wind_direction":"东南风","wind_strength":"5级","humidity":"87%","time":"14:44"},"today":{"temperature":"17℃~20℃","weather":"小雨转阴","weather_id":{"fa":"07","fb":"02"},"wind":"东风4-5 级","week":"星期二","city":"苏州","date_y":"2017年05月02日","dressing_index":"较舒适","dressing_advice":"建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。","uv_index":"最弱","comfort_index":"","wash_index":"不宜","travel_index":"较不宜","exercise_index":"较不宜","drying_index":""},"future":{"day_20170502":{"temperature":"17℃~20℃","weather":"小雨转阴","weather_id":{"fa":"07","fb":"02"},"wind":"东风4-5 级","week":"星期二","date":"20170502"},"day_20170503":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期三","date":"20170503"},"day_20170504":{"temperature":"18℃~22℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期四","date":"20170504"},"day_20170505":{"temperature":"17℃~26℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"西北风微风","week":"星期五","date":"20170505"},"day_20170506":{"temperature":"14℃~24℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"东风3-4 级","week":"星期六","date":"20170506"},"day_20170507":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期日","date":"20170507"},"day_20170508":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期一","date":"20170508"}}}
+     * result : {"sk":{"temp":"22","wind_direction":"北风","wind_strength":"2级","humidity":"62%","time":"17:15"},"today":{"temperature":"18℃~22℃","weather":"阴转小雨","weather_id":{"fa":"02","fb":"07"},"wind":"东南风微风","week":"星期三","city":"上海","date_y":"2017年05月03日","dressing_index":"较舒适","dressing_advice":"建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。","uv_index":"最弱","comfort_index":"","wash_index":"不宜","travel_index":"较不宜","exercise_index":"较不宜","drying_index":""},"future":[{"temperature":"18℃~22℃","weather":"阴转小雨","weather_id":{"fa":"02","fb":"07"},"wind":"东南风微风","week":"星期三","date":"20170503"},{"temperature":"19℃~23℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期四","date":"20170504"},{"temperature":"17℃~26℃","weather":"多云转晴","weather_id":{"fa":"01","fb":"00"},"wind":"北风微风","week":"星期五","date":"20170505"},{"temperature":"16℃~24℃","weather":"晴转多云","weather_id":{"fa":"00","fb":"01"},"wind":"东北风微风","week":"星期六","date":"20170506"},{"temperature":"17℃~23℃","weather":"多云转中雨","weather_id":{"fa":"01","fb":"08"},"wind":"南风微风","week":"星期日","date":"20170507"},{"temperature":"16℃~24℃","weather":"晴转多云","weather_id":{"fa":"00","fb":"01"},"wind":"东北风微风","week":"星期一","date":"20170508"},{"temperature":"19℃~23℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期二","date":"20170509"}]}
      * error_code : 0
      */
 
     private String resultcode;
     private String reason;
-    private ResultBean result; //ResultBean
+    private ResultBean result;
     private int error_code;
 
     public String getResultcode() {
@@ -52,14 +54,14 @@ public class JrdWeatherBean {
 
     public static class ResultBean {
         /**
-         * sk : {"temp":"17","wind_direction":"东南风","wind_strength":"5级","humidity":"87%","time":"14:44"}
-         * today : {"temperature":"17℃~20℃","weather":"小雨转阴","weather_id":{"fa":"07","fb":"02"},"wind":"东风4-5 级","week":"星期二","city":"苏州","date_y":"2017年05月02日","dressing_index":"较舒适","dressing_advice":"建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。","uv_index":"最弱","comfort_index":"","wash_index":"不宜","travel_index":"较不宜","exercise_index":"较不宜","drying_index":""}
-         * future : {"day_20170502":{"temperature":"17℃~20℃","weather":"小雨转阴","weather_id":{"fa":"07","fb":"02"},"wind":"东风4-5 级","week":"星期二","date":"20170502"},"day_20170503":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期三","date":"20170503"},"day_20170504":{"temperature":"18℃~22℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期四","date":"20170504"},"day_20170505":{"temperature":"17℃~26℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"西北风微风","week":"星期五","date":"20170505"},"day_20170506":{"temperature":"14℃~24℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"东风3-4 级","week":"星期六","date":"20170506"},"day_20170507":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期日","date":"20170507"},"day_20170508":{"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期一","date":"20170508"}}
+         * sk : {"temp":"22","wind_direction":"北风","wind_strength":"2级","humidity":"62%","time":"17:15"}
+         * today : {"temperature":"18℃~22℃","weather":"阴转小雨","weather_id":{"fa":"02","fb":"07"},"wind":"东南风微风","week":"星期三","city":"上海","date_y":"2017年05月03日","dressing_index":"较舒适","dressing_advice":"建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。","uv_index":"最弱","comfort_index":"","wash_index":"不宜","travel_index":"较不宜","exercise_index":"较不宜","drying_index":""}
+         * future : [{"temperature":"18℃~22℃","weather":"阴转小雨","weather_id":{"fa":"02","fb":"07"},"wind":"东南风微风","week":"星期三","date":"20170503"},{"temperature":"19℃~23℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期四","date":"20170504"},{"temperature":"17℃~26℃","weather":"多云转晴","weather_id":{"fa":"01","fb":"00"},"wind":"北风微风","week":"星期五","date":"20170505"},{"temperature":"16℃~24℃","weather":"晴转多云","weather_id":{"fa":"00","fb":"01"},"wind":"东北风微风","week":"星期六","date":"20170506"},{"temperature":"17℃~23℃","weather":"多云转中雨","weather_id":{"fa":"01","fb":"08"},"wind":"南风微风","week":"星期日","date":"20170507"},{"temperature":"16℃~24℃","weather":"晴转多云","weather_id":{"fa":"00","fb":"01"},"wind":"东北风微风","week":"星期一","date":"20170508"},{"temperature":"19℃~23℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期二","date":"20170509"}]
          */
 
         private SkBean sk;
         private TodayBean today;
-        private FutureBean future;
+        private List<FutureBean> future;
 
         public SkBean getSk() {
             return sk;
@@ -77,21 +79,21 @@ public class JrdWeatherBean {
             this.today = today;
         }
 
-        public FutureBean getFuture() {
+        public List<FutureBean> getFuture() {
             return future;
         }
 
-        public void setFuture(FutureBean future) {
+        public void setFuture(List<FutureBean> future) {
             this.future = future;
         }
 
         public static class SkBean {
             /**
-             * temp : 17
-             * wind_direction : 东南风
-             * wind_strength : 5级
-             * humidity : 87%
-             * time : 14:44
+             * temp : 22
+             * wind_direction : 北风
+             * wind_strength : 2级
+             * humidity : 62%
+             * time : 17:15
              */
 
             private String temp;
@@ -143,13 +145,13 @@ public class JrdWeatherBean {
 
         public static class TodayBean {
             /**
-             * temperature : 17℃~20℃
-             * weather : 小雨转阴
-             * weather_id : {"fa":"07","fb":"02"}
-             * wind : 东风4-5 级
-             * week : 星期二
-             * city : 苏州
-             * date_y : 2017年05月02日
+             * temperature : 18℃~22℃
+             * weather : 阴转小雨
+             * weather_id : {"fa":"02","fb":"07"}
+             * wind : 东南风微风
+             * week : 星期三
+             * city : 上海
+             * date_y : 2017年05月03日
              * dressing_index : 较舒适
              * dressing_advice : 建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。
              * uv_index : 最弱
@@ -298,8 +300,8 @@ public class JrdWeatherBean {
 
             public static class WeatherIdBean {
                 /**
-                 * fa : 07
-                 * fb : 02
+                 * fa : 02
+                 * fb : 07
                  */
 
                 private String fa;
@@ -323,722 +325,94 @@ public class JrdWeatherBean {
             }
         }
 
-        public static class FutureBean {
+        public static class FutureBean implements Serializable {
             /**
-             * day_20170502 : {"temperature":"17℃~20℃","weather":"小雨转阴","weather_id":{"fa":"07","fb":"02"},"wind":"东风4-5 级","week":"星期二","date":"20170502"}
-             * day_20170503 : {"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期三","date":"20170503"}
-             * day_20170504 : {"temperature":"18℃~22℃","weather":"中雨转阴","weather_id":{"fa":"08","fb":"02"},"wind":"东南风3-4 级","week":"星期四","date":"20170504"}
-             * day_20170505 : {"temperature":"17℃~26℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"西北风微风","week":"星期五","date":"20170505"}
-             * day_20170506 : {"temperature":"14℃~24℃","weather":"多云","weather_id":{"fa":"01","fb":"01"},"wind":"东风3-4 级","week":"星期六","date":"20170506"}
-             * day_20170507 : {"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期日","date":"20170507"}
-             * day_20170508 : {"temperature":"19℃~22℃","weather":"阴转雷阵雨","weather_id":{"fa":"02","fb":"04"},"wind":"东南风4-5 级","week":"星期一","date":"20170508"}
+             * temperature : 18℃~22℃
+             * weather : 阴转小雨
+             * weather_id : {"fa":"02","fb":"07"}
+             * wind : 东南风微风
+             * week : 星期三
+             * date : 20170503
              */
 
-            private Day20170502Bean day_20170502;
-            private Day20170503Bean day_20170503;
-            private Day20170504Bean day_20170504;
-            private Day20170505Bean day_20170505;
-            private Day20170506Bean day_20170506;
-            private Day20170507Bean day_20170507;
-            private Day20170508Bean day_20170508;
+            private String temperature;
+            private String weather;
+            private WeatherIdBeanX weather_id;
+            private String wind;
+            private String week;
+            private String date;
 
-            public Day20170502Bean getDay_20170502() {
-                return day_20170502;
+            public String getTemperature() {
+                return temperature;
             }
 
-            public void setDay_20170502(Day20170502Bean day_20170502) {
-                this.day_20170502 = day_20170502;
+            public void setTemperature(String temperature) {
+                this.temperature = temperature;
             }
 
-            public Day20170503Bean getDay_20170503() {
-                return day_20170503;
+            public String getWeather() {
+                return weather;
             }
 
-            public void setDay_20170503(Day20170503Bean day_20170503) {
-                this.day_20170503 = day_20170503;
+            public void setWeather(String weather) {
+                this.weather = weather;
             }
 
-            public Day20170504Bean getDay_20170504() {
-                return day_20170504;
+            public WeatherIdBeanX getWeather_id() {
+                return weather_id;
             }
 
-            public void setDay_20170504(Day20170504Bean day_20170504) {
-                this.day_20170504 = day_20170504;
+            public void setWeather_id(WeatherIdBeanX weather_id) {
+                this.weather_id = weather_id;
             }
 
-            public Day20170505Bean getDay_20170505() {
-                return day_20170505;
+            public String getWind() {
+                return wind;
             }
 
-            public void setDay_20170505(Day20170505Bean day_20170505) {
-                this.day_20170505 = day_20170505;
+            public void setWind(String wind) {
+                this.wind = wind;
             }
 
-            public Day20170506Bean getDay_20170506() {
-                return day_20170506;
+            public String getWeek() {
+                return week;
             }
 
-            public void setDay_20170506(Day20170506Bean day_20170506) {
-                this.day_20170506 = day_20170506;
+            public void setWeek(String week) {
+                this.week = week;
             }
 
-            public Day20170507Bean getDay_20170507() {
-                return day_20170507;
+            public String getDate() {
+                return date;
             }
 
-            public void setDay_20170507(Day20170507Bean day_20170507) {
-                this.day_20170507 = day_20170507;
+            public void setDate(String date) {
+                this.date = date;
             }
 
-            public Day20170508Bean getDay_20170508() {
-                return day_20170508;
-            }
-
-            public void setDay_20170508(Day20170508Bean day_20170508) {
-                this.day_20170508 = day_20170508;
-            }
-
-            public static class Day20170502Bean {
+            public static class WeatherIdBeanX {
                 /**
-                 * temperature : 17℃~20℃
-                 * weather : 小雨转阴
-                 * weather_id : {"fa":"07","fb":"02"}
-                 * wind : 东风4-5 级
-                 * week : 星期二
-                 * date : 20170502
+                 * fa : 02
+                 * fb : 07
                  */
 
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanX weather_id;
-                private String wind;
-                private String week;
-                private String date;
+                private String fa;
+                private String fb;
 
-                public String getTemperature() {
-                    return temperature;
+                public String getFa() {
+                    return fa;
                 }
 
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
+                public void setFa(String fa) {
+                    this.fa = fa;
                 }
 
-                public String getWeather() {
-                    return weather;
+                public String getFb() {
+                    return fb;
                 }
 
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanX {
-                    /**
-                     * fa : 07
-                     * fb : 02
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170503Bean {
-                /**
-                 * temperature : 19℃~22℃
-                 * weather : 阴转雷阵雨
-                 * weather_id : {"fa":"02","fb":"04"}
-                 * wind : 东南风4-5 级
-                 * week : 星期三
-                 * date : 20170503
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXX {
-                    /**
-                     * fa : 02
-                     * fb : 04
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170504Bean {
-                /**
-                 * temperature : 18℃~22℃
-                 * weather : 中雨转阴
-                 * weather_id : {"fa":"08","fb":"02"}
-                 * wind : 东南风3-4 级
-                 * week : 星期四
-                 * date : 20170504
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXXX {
-                    /**
-                     * fa : 08
-                     * fb : 02
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170505Bean {
-                /**
-                 * temperature : 17℃~26℃
-                 * weather : 多云
-                 * weather_id : {"fa":"01","fb":"01"}
-                 * wind : 西北风微风
-                 * week : 星期五
-                 * date : 20170505
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXXXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXXXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXXXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXXXX {
-                    /**
-                     * fa : 01
-                     * fb : 01
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170506Bean {
-                /**
-                 * temperature : 14℃~24℃
-                 * weather : 多云
-                 * weather_id : {"fa":"01","fb":"01"}
-                 * wind : 东风3-4 级
-                 * week : 星期六
-                 * date : 20170506
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXXXXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXXXXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXXXXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXXXXX {
-                    /**
-                     * fa : 01
-                     * fb : 01
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170507Bean {
-                /**
-                 * temperature : 19℃~22℃
-                 * weather : 阴转雷阵雨
-                 * weather_id : {"fa":"02","fb":"04"}
-                 * wind : 东南风4-5 级
-                 * week : 星期日
-                 * date : 20170507
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXXXXXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXXXXXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXXXXXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXXXXXX {
-                    /**
-                     * fa : 02
-                     * fb : 04
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
-                }
-            }
-
-            public static class Day20170508Bean {
-                /**
-                 * temperature : 19℃~22℃
-                 * weather : 阴转雷阵雨
-                 * weather_id : {"fa":"02","fb":"04"}
-                 * wind : 东南风4-5 级
-                 * week : 星期一
-                 * date : 20170508
-                 */
-
-                private String temperature;
-                private String weather;
-                private WeatherIdBeanXXXXXXX weather_id;
-                private String wind;
-                private String week;
-                private String date;
-
-                public String getTemperature() {
-                    return temperature;
-                }
-
-                public void setTemperature(String temperature) {
-                    this.temperature = temperature;
-                }
-
-                public String getWeather() {
-                    return weather;
-                }
-
-                public void setWeather(String weather) {
-                    this.weather = weather;
-                }
-
-                public WeatherIdBeanXXXXXXX getWeather_id() {
-                    return weather_id;
-                }
-
-                public void setWeather_id(WeatherIdBeanXXXXXXX weather_id) {
-                    this.weather_id = weather_id;
-                }
-
-                public String getWind() {
-                    return wind;
-                }
-
-                public void setWind(String wind) {
-                    this.wind = wind;
-                }
-
-                public String getWeek() {
-                    return week;
-                }
-
-                public void setWeek(String week) {
-                    this.week = week;
-                }
-
-                public String getDate() {
-                    return date;
-                }
-
-                public void setDate(String date) {
-                    this.date = date;
-                }
-
-                public static class WeatherIdBeanXXXXXXX {
-                    /**
-                     * fa : 02
-                     * fb : 04
-                     */
-
-                    private String fa;
-                    private String fb;
-
-                    public String getFa() {
-                        return fa;
-                    }
-
-                    public void setFa(String fa) {
-                        this.fa = fa;
-                    }
-
-                    public String getFb() {
-                        return fb;
-                    }
-
-                    public void setFb(String fb) {
-                        this.fb = fb;
-                    }
+                public void setFb(String fb) {
+                    this.fb = fb;
                 }
             }
         }
