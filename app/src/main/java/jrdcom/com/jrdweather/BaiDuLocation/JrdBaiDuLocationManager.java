@@ -68,6 +68,7 @@ public class JrdBaiDuLocationManager {
 
             if(true){
                 if(managerListener != null){
+
                     managerListener.getCoordinate(lat, longti, radius);
                     managerListener.getCityName(bdLocation.getCity());
                 }

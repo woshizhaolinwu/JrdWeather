@@ -1,9 +1,12 @@
 package jrdcom.com.jrdweather.Ui.Main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +19,21 @@ import jrdcom.com.jrdweather.Ui.Main.Adapter.JrdWeatherPageAdapter;
 public class MainActivity extends BaseActivity implements MainConstract.MainActivityView{
     private ViewPager mViewPager;
     private RecyclerView mRecyclerView;
+    private String mCityName;
     List<MainFragment> fragments = new ArrayList<>();
     List<JrdWeatherBean.ResultBean.FutureBean> futureBeanList;
     //定义Controller的控件
     /*BaseActivity的抽象*/
     private MainConstract.MainPresendApi presendApi;
 
+    public static void start(Context mainContext){
+        Intent intent = new Intent();
+        intent.setClass(mainContext,MainActivity.class);
+        mainContext.startActivity(intent);
+    }
     @Override
     public void initData() {
         presendApi = new MainPresent(this);
-        presendApi.requestWeatherData();
     }
 
     @Override
@@ -49,7 +57,22 @@ public class MainActivity extends BaseActivity implements MainConstract.MainActi
         JrdWeatherPageAdapter jrdWeatherPageAdapter = new JrdWeatherPageAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(jrdWeatherPageAdapter);
 
+        //需要等布局结束后才能请求数据
+
+        getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                presendApi.requestWeatherData();
+                getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
         //初始化list
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -63,7 +86,9 @@ public class MainActivity extends BaseActivity implements MainConstract.MainActi
             @Override
             public void onPageSelected(int position) {
                 MainFragment fragment = fragments.get(position);
-                fragment.updateInfo(futureBeanList.get(position),getCityName());
+                if(futureBeanList != null){
+                    fragment.updateInfo(futureBeanList.get(position),getCityName());
+                }
             }
 
             @Override
@@ -79,15 +104,16 @@ public class MainActivity extends BaseActivity implements MainConstract.MainActi
     }
 
     @Override
-    public void updateData(List<JrdWeatherBean.ResultBean.FutureBean> futureBeen) {
+    public void updateData(List<JrdWeatherBean.ResultBean.FutureBean> futureBeen, String cityName) {
         futureBeanList = futureBeen;
+        mCityName = cityName;
         showDataWithWeatherData(futureBeanList.get(mViewPager.getCurrentItem()));
     }
 
     public void showDataWithWeatherData(JrdWeatherBean.ResultBean.FutureBean futureBean) {
         int index = mViewPager.getCurrentItem();
         MainFragment mainFragment = fragments.get(index);
-        mainFragment.updateInfo(futureBean, getCityName());
+        mainFragment.updateInfo(futureBean, mCityName);
     }
 
     private String getCityName(){

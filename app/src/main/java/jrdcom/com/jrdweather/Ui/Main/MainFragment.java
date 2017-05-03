@@ -71,6 +71,9 @@ public class MainFragment extends BaseFragment {
     }
 
     private void updateScreen(){
+        if(mCityText == null){
+            return;
+        }
         mCityText.setText(mCityName);
         if(mFutureBean!= null){
             mTempText.setText(mFutureBean.getTemperature());

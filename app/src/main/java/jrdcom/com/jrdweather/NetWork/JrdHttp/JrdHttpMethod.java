@@ -57,7 +57,7 @@ public class JrdHttpMethod {
     * */
     /*获取天气接口*/
     public void requestWeatherData(Subscriber<JrdWeatherBean> subscriber, String cityName){
-        jrdApiClient.getWeatherData(cityName,JUHE_WEATHER_KEY)
+        jrdApiClient.getWeatherData(cityName,JUHE_WEATHER_KEY,"2")
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

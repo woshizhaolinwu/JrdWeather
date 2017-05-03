@@ -12,7 +12,7 @@ public class MainConstract {
     /*Main View Presend*/
     public interface MainActivityView{
         //void showDataWithWeatherData(List<JrdWeatherBean.ResultBean.FutureBean> weatherBean);
-        void updateData(List<JrdWeatherBean.ResultBean.FutureBean> futureBeen);
+        void updateData(List<JrdWeatherBean.ResultBean.FutureBean> futureBeen, String cityName);
     }
 
     public interface MainPresendApi{

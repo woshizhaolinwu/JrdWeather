@@ -43,11 +43,13 @@ public class JrdWeatherModel implements SplashConstract.SplashModelApi {
         @Override
         public void getCityName(String cityName) {
             //保存city name
-            //JrdDataCache.getInstance().setHasMapData(JrdDataCache.JRD_WEATHER_CITY_NAME, cityName);
-            //根据City来获取weather信息
-            getWeatherInfo(cityName);
             //成功获取到城市名称，停止定位
             jrdBaiDuLocationManager.stopLocation();
+            //保存weather信息
+            JrdWeatherDataCache.getInstance().saveWeatherName(cityName);
+            //根据City来获取weather信息
+            getWeatherInfo(cityName);
+
         }
     };
 
@@ -72,6 +74,8 @@ public class JrdWeatherModel implements SplashConstract.SplashModelApi {
                 if(mJrdWeatherGetListener != null){
                     mJrdWeatherGetListener.getWeatherInfo(weatherBean);
                 }
+                //保存天气信
+                JrdWeatherDataCache.getInstance().saveWeatherData(weatherBean);
             }
         }, false);
         JrdHttpMethod.getInstance().requestWeatherData(progressSubscriber, cityName);

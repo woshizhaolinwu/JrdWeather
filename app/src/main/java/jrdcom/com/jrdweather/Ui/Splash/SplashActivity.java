@@ -20,6 +20,7 @@ import java.util.Map;
 
 import jrdcom.com.jrdweather.Base.BaseActivity;
 import jrdcom.com.jrdweather.R;
+import jrdcom.com.jrdweather.Ui.Main.MainActivity;
 import jrdcom.com.jrdweather.Utils.AppUtils;
 import jrdcom.com.jrdweather.Utils.DisplayUtils;
 import jrdcom.com.jrdweather.Utils.JrdCommon;
@@ -71,7 +72,7 @@ public class SplashActivity extends BaseActivity implements SplashConstract.Spla
             @Override
             public void onClick(View v) {
                 /*进入MainActivity*/
-
+                MainActivity.start(SplashActivity.this);
             }
         });
     }
@@ -109,8 +110,6 @@ public class SplashActivity extends BaseActivity implements SplashConstract.Spla
                 splashPresent.requestWeatherData();
             }
         }
-
-        /*if(checkSelfPermission(Android.))*/
     }
 
     /*
@@ -205,7 +204,6 @@ public class SplashActivity extends BaseActivity implements SplashConstract.Spla
                         }
                     });
                     builder.create().show();
-
                 }
                 break;
         }

@@ -27,7 +27,7 @@ public class MainPresent implements MainConstract.MainPresendApi {
         @Override
         public void getWeatherInfo(JrdWeatherBean weatherBean) {
             //获得信息，回调给View显示
-            mainView.showDataWithWeatherData(weatherBean.getResult().getFuture());
+            mainView.updateData(weatherBean.getResult().getFuture(),weatherBean.getResult().getToday().getCity());
         }
     };
 
@@ -35,6 +35,5 @@ public class MainPresent implements MainConstract.MainPresendApi {
     public String getCityName() {
        String cityName =  JrdWeatherDataCache.getInstance().getWeatherName();
         return cityName;
-        //return null;
     }
 }

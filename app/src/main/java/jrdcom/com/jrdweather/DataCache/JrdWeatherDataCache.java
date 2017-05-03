@@ -46,6 +46,9 @@ public class JrdWeatherDataCache {
     public JrdWeatherBean getWeatherData(String cityName){
         String weather = (String) SPUtil.readObjectPreference(JrdCommon.WEATHER_DATA, String.class);
         JrdWeatherBean weatherBean = GsonUtils.fromJson(weather, JrdWeatherBean.class);
+        if(weatherBean == null){
+            return weatherBean;
+        }
         String weatherCity = weatherBean.getResult().getToday().getCity();
         if(cityName.contains(weatherCity)||cityName.equalsIgnoreCase(weatherCity)){
             return weatherBean;

@@ -24,8 +24,8 @@ public interface JrdServiceInterface {
 
     /*
     * 接口的定义
-    * http://v.juhe.cn/weather/index?cityname=上海市&key=61a5541c660e656c809155a80f6c76de
+    * http://v.juhe.cn/weather/index?cityname=上海市&key=61a5541c660e656c809155a80f6c76de&format=2
     * */
     @GET("index")
-    Observable<JrdWeatherBean> getWeatherData(@Query("cityname") String cityName, @Query("key") String key);
+    Observable<JrdWeatherBean> getWeatherData(@Query("cityname") String cityName, @Query("key") String key, @Query("format") String value);
 }

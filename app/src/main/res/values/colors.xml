@@ -12,4 +12,5 @@
     <color name="second_title">#DDDDDD</color>
     <color name="background_color">#329EDB</color>
     <color name="app_main_color">#3F51B5</color>
+    <color name="main_fragment_background">#7FBD42</color>
 </resources>
